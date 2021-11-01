@@ -40,13 +40,21 @@ export default new Vuex.Store({
 			},
 		],
 	},
-	mutations: {},
 	getters: {
 		copyright(state) {
 			const currentYear = new Date().getFullYear();
 			return `Copyright ${state.restaurantName} ${currentYear}`;
 		},
 	},
-	actions: {},
+	mutations: {
+		ADD_ITEMS_TO_SHOPPING_CART(state, amount) {
+			state.shoppingCart += amount;
+		},
+	},
+	actions: {
+		updateShoppingCart({ commit }, amount) {
+			commit('ADD_ITEMS_TO_SHOPPING_CART', amount);
+		},
+	},
 	modules: {},
 });
